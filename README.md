@@ -7,7 +7,7 @@
 
 ## 使用说明
 
-下载此jar包（传送门）
+下载此jar包（[传送门](https://github.com/LeacHar/PictureToWebP/releases/tag/V1.0)）
 
 java -jar CoverWebP.jar
 
