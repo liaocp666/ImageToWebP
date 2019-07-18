@@ -22,8 +22,13 @@ public class ToWebPUtil {
      * @return
      */
     public static void toWebP(String src) {
+        File dest = null;
         File file = new File(src);
-        File dest = new File(file.getAbsolutePath() + File.separator +"WebP");
+        if (file.isDirectory()) {
+            dest = new File(file.getAbsolutePath() + File.separator + "WebP");
+        } else if (file.isFile()) {
+            dest = new File(file.getParent() + File.separator + "WebP");
+        }
         dest.mkdirs();
         System.out.println("创建文件夹" + dest.getAbsolutePath());
         start(file, dest);
@@ -32,7 +37,7 @@ public class ToWebPUtil {
     /**
      * 图片转为WebP
      *
-     * @param src 源文件路径
+     * @param src  源文件路径
      * @param dest 目标文件路径
      * @return
      */
@@ -51,6 +56,7 @@ public class ToWebPUtil {
 
     /**
      * 开启转换
+     *
      * @param file
      * @param dest
      */
@@ -96,8 +102,7 @@ public class ToWebPUtil {
     }
 
     public static String getUUID() {
-       return UUID.randomUUID().toString().replace("-", "").replace("-", "").replace("-", "");
-
+        return UUID.randomUUID().toString().replace("-", "").replace("-", "").replace("-", "");
     }
 
     /**
