@@ -7,9 +7,9 @@
 
 ## 使用说明
 
-下载此jar包（[传送门](https://github.com/LeacHar/PictureToWebP/releases/tag/V1.0)）
+下载此压缩包（[传送门](https://github.com/LeacHar/PictureToWebP/releases/tag/V1.0)）
 
-java -jar CoverWebP.jar
+运行里面的run.bat
 
 ## 演示操作
 
