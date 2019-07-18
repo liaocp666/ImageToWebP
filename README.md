@@ -1,5 +1,5 @@
 # PictureToWebP
-图片转WebP格式
+图片转WebP格式，是对[webp-io](https://github.com/biezhi/webp-io)的封装
 
 ## 功能描述
 
@@ -14,4 +14,3 @@ java -jar CoverWebP.jar
 ## 演示操作
 
 ![CoverWebP](https://i.loli.net/2019/07/18/5d30156a0e5e710864.gif)
-
