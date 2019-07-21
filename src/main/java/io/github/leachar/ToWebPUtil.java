@@ -66,7 +66,7 @@ public class ToWebPUtil {
         } else if (file.isDirectory()) {
             directoryToWebP(file, dest);
         } else {
-            System.out.println(">>>路径即不是一个文件也不是一个文件夹<<<");
+            System.out.println(">>>>> 路径即不是一个文件也不是一个文件夹");
         }
     }
 
@@ -79,7 +79,7 @@ public class ToWebPUtil {
     private static void directoryToWebP(File src, File dest) {
         List<File> files = getDirectoryPicture(src);
         if (files.size() == 0) {
-            System.out.println(">>>未发现图片文件<<<");
+            System.out.println(">>>>> 未发现图片文件");
             return;
         }
         for (File file : files) {
@@ -154,7 +154,7 @@ public class ToWebPUtil {
             return null != image ? true : false;
         } catch (IOException e) {
             if (file.isFile()) {
-                System.out.println(file + "不是图片文件");
+                System.out.println("不是图片文件>>>>> " + file);
             }
             return false;
         }

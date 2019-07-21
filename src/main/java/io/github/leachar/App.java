@@ -12,26 +12,36 @@ public class App {
 
     public static void main(String[] args) {
 
-        new App().boot();
+        new App().start();
 
     }
 
-    private void boot() {
+    private void start() {
         do {
-            start();
-            System.out.println("退出？(y/n)");
+            run();
+            System.out.println("继续？(y/n)");
             String input = scanner.nextLine();
-            if (input.equalsIgnoreCase("y")) {
+            if (input.equalsIgnoreCase("n")) {
                 flag = false;
             }
         } while (flag);
         System.exit(0);
     }
 
-    private void start() {
+    private void run() {
         System.out.println("输入需要转化图片或者文件夹路径：");
         String srcPath = scanner.nextLine();
-        ToWebPUtil.toWebP(srcPath);
+        System.out.println("是否需要将该路径下的所有图片转为webp格式(包括子文件夹)");
+        System.out.println("(yes/no)?");
+        String recursive = scanner.nextLine();
+        try {
+            String destPath = FileUtil.processSrcAndDest(srcPath, recursive);
+            System.out.println("输出的WebP图片放于此路径中");
+            System.out.println(">>>>> " + destPath);
+        } catch (Exception e) {
+            System.out.println("路径错误 >>>> " + srcPath);
+        }
+
     }
 
 }

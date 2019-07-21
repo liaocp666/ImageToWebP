@@ -1,13 +1,31 @@
 package io.github.leachar;
 
+import io.github.biezhi.webp.WebpIO;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 
 public class ImageUtil {
+
+    /**
+     * 转换图片格式 --> .webp
+     * @param srcFiles
+     * @param destFile
+     * @return 输出的文件路径
+     */
+    public static String imageToWebP(List<File> srcFiles, File destFile) {
+        WebpIO webp = WebpIO.create();
+        for (File file : srcFiles) {
+            webp.toWEBP(file,
+                    new File(destFile + File.separator
+                            + StringUtil.getUUID()
+                            + StringUtil.WEBP));
+        }
+        return destFile.getAbsolutePath();
+    }
 
     /**
      * 是否递归获取所有图片
@@ -15,12 +33,13 @@ public class ImageUtil {
      * @return
      */
     public static List<File> getImageFile(File file, String recursive, List<File> files) {
+        recursive = recursive.toLowerCase();        //转成小写
         switch (recursive) {
             case "yes":
                 // 递归获取
                 getAllFile(file, files);
             break;
-            case "no":
+            default:
                 // 只获取当面目录下的图片文件
                 File[] fileList = file.listFiles();
                 for (File f : fileList) {
@@ -63,8 +82,7 @@ public class ImageUtil {
         try {
             image = ImageIO.read(file);
         } catch (IOException e) {
-            e.printStackTrace();
-            return true;
+            return false;
         }
         return null != image ? true : false;
     }
