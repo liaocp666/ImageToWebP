@@ -15,6 +15,22 @@ public class FileUtil {
     private final static String WEBP = File.separator + "WebP-";
 
     /**
+     * 清洁目录
+     * @param file
+     */
+    public static void delFile(File file) {
+        if (file.isFile()) {
+            file.deleteOnExit();
+        } else {
+            File[] filenames = file.listFiles();
+            for (File f : filenames) {
+                delFile(f);
+            }
+            file.deleteOnExit();
+        }
+    }
+
+    /**
      * 根据用户输入的源路径，生成目标路径
      * 如果不是文件夹，就在文件所在的目录创建一个文件夹
      *

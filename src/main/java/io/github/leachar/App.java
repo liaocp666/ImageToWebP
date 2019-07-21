@@ -1,5 +1,6 @@
 package io.github.leachar;
 
+import java.io.File;
 import java.util.Scanner;
 
 /**
@@ -25,7 +26,6 @@ public class App {
                 flag = false;
             }
         } while (flag);
-        System.exit(0);
     }
 
     private void run() {
